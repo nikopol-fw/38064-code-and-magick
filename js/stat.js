@@ -14,7 +14,7 @@ var GRAPH_COLOR_OTHERS = 'hsl(240, ';
 var GRAPH_COLOR_OTHERS_LIGHTNESS = '50%';
 var FONT_SIZE = 16;
 
-var renderCloud = function(ctx, x, y, cWidth, cHeight, color) {
+var renderCloud = function (ctx, x, y, cWidth, cHeight, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, cWidth, cHeight);
 };
@@ -31,7 +31,7 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-var renderStatistics = function (ctx, names, times) {
+window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y + 10, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT, '#ffffff');
 
