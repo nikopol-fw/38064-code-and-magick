@@ -12,7 +12,14 @@ var GRAPH_GAP = 50;
 var GRAPH_COLOR_PLAYER = 'rgba(255, 0, 0, 1)';
 var GRAPH_COLOR_OTHERS = 'hsl(240, ';
 var GRAPH_COLOR_OTHERS_LIGHTNESS = '50%';
+
 var FONT_SIZE = 16;
+var TEXT_COLOR = '#000000';
+var TEXT_MAIN = [
+  'Ура вы победили!',
+  'Список результатов:'
+];
+var fontMainStyle = FONT_SIZE.toString() + 'px PT Mono';
 
 var renderCloud = function (ctx, x, y, cWidth, cHeight, color) {
   ctx.fillStyle = color;
@@ -31,14 +38,26 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
+var renderText = function (ctx, text, coordinate, fontStyle, color) {
+  ctx.fillStyle = color;
+  ctx.font = fontStyle;
+
+  for (var i = 0; i < text.length; i++) {
+    ctx.fillText(text[i], coordinate[i][0], coordinate[i][1]);
+  }
+};
+
 window.renderStatistics = function (ctx, names, times) {
-  renderCloud(ctx, CLOUD_X, CLOUD_Y + 10, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
+  renderCloud(ctx, CLOUD_X + 10, CLOUD_Y + 10, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT, '#ffffff');
 
-  ctx.fillStyle = '#000000';
-  ctx.font = FONT_SIZE.toString() + 'px PT Mono';
-  ctx.fillText('Ура вы победили!', CLOUD_X + GAP, CLOUD_Y + GAP);
-  ctx.fillText('Список результатов:', CLOUD_X + GAP, CLOUD_Y + GAP + FONT_SIZE);
+  var coordinates = [
+    [CLOUD_X + GAP, CLOUD_Y + GAP],
+    [CLOUD_X + GAP, CLOUD_Y + GAP + FONT_SIZE]
+  ];
+
+  renderText(ctx, TEXT_MAIN, coordinates, fontMainStyle, TEXT_COLOR);
+
 
   var maxTime = getMaxElement(times);
   var curGraphHeight;
