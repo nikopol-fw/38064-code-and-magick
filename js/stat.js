@@ -29,7 +29,7 @@ var getMaxElement = function (arr) {
   }
 
   return maxElement;
-}
+};
 
 var renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X, CLOUD_Y + 10, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
@@ -70,7 +70,7 @@ var renderStatistics = function (ctx, names, times) {
     ctx.fillText(names[i], curGraphX, curGraphNameY);
     ctx.fillText(Math.round(times[i]), curGraphX, curGraphTextY);
 
-    if (names[i] == 'Вы') {
+    if (names[i] === 'Вы') {
       ctx.fillStyle = GRAPH_COLOR_PLAYER;
     } else {
       ctx.fillStyle = GRAPH_COLOR_OTHERS + (Math.random() * 100).toString() + '%, ' + GRAPH_COLOR_OTHERS_LIGHTNESS + ')';
