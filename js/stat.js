@@ -37,7 +37,8 @@ var renderStatistics = function (ctx, names, times) {
 
   ctx.fillStyle = '#000000';
   ctx.font = FONT_SIZE.toString() + 'px PT Mono';
-  ctx.fillText('Ура вы победили!\nСписок результатов:', CLOUD_X + GAP, CLOUD_Y + GAP);
+  ctx.fillText('Ура вы победили!', CLOUD_X + GAP, CLOUD_Y + GAP);
+  ctx.fillText('Список результатов:', CLOUD_X + GAP, CLOUD_Y + GAP + FONT_SIZE);
 
   var maxTime = getMaxElement(times);
   var curGraphHeight;
