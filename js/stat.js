@@ -60,30 +60,25 @@ window.renderStatistics = function (ctx, names, times) {
 
 
   var maxTime = getMaxElement(times);
-  var curGraphHeight;
-  var curGraphX;
-  var curGraphY;
-  var curGraphTextY;
-  var curGraphNameY;
 
   for (var i = 0; i < names.length; i++) {
     // Пропорция с округлением результата
     // @время-текущего-игрока * @максимальная-высота-графа / @максимальное-время-из-всех-игроков
-    curGraphHeight = Math.round(times[i] * GRAPH_HEIGHT / maxTime);
+    var curGraphHeight = Math.round(times[i] * GRAPH_HEIGHT / maxTime);
 
     // @Координата-X-до-облака + @отступ +
     // + @порядок-элемента * отступ-между-графами + @порядок-элемента * ширину-графа
-    curGraphX = CLOUD_X + GAP + i * GRAPH_GAP + i * GRAPH_WIDTH;
+    var curGraphX = CLOUD_X + GAP + i * GRAPH_GAP + i * GRAPH_WIDTH;
 
     // @Координата-до-облака + @двойной-отступ +
     // + @два-размера-шрифта + @разница-между-максимальной-высотой-графа-и-текущей
-    curGraphY = CLOUD_Y + 2 * GAP + 2 * FONT_SIZE + (GRAPH_HEIGHT - curGraphHeight);
+    var curGraphY = CLOUD_Y + 2 * GAP + 2 * FONT_SIZE + (GRAPH_HEIGHT - curGraphHeight);
 
     // @координата-текущего-графа - @размер-шрифта
-    curGraphTextY = curGraphY - FONT_SIZE;
+    var curGraphTextY = curGraphY - FONT_SIZE;
 
     // @координата-текущего-графа - @два-отступа + @три-строчки-текста + @максимальная-высота-графа
-    curGraphNameY = CLOUD_Y + 2 * GAP + 3 * FONT_SIZE + GRAPH_HEIGHT;
+    var curGraphNameY = CLOUD_Y + 2 * GAP + 3 * FONT_SIZE + GRAPH_HEIGHT;
 
     ctx.fillStyle = '#000000';
     ctx.fillText(names[i], curGraphX, curGraphNameY);
