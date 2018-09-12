@@ -38,12 +38,12 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-var renderText = function (ctx, text, coordinate, fontStyle, color) {
+var renderText = function (ctx, text, beginCoord, fontSize, fontFamily, color) {
   ctx.fillStyle = color;
-  ctx.font = fontStyle;
+  ctx.font = fontFamily;
 
   for (var i = 0; i < text.length; i++) {
-    ctx.fillText(text[i], coordinate[i][0], coordinate[i][1]);
+    ctx.fillText(text[i], beginCoord[0], beginCoord[1] + i * fontSize);
   }
 };
 
@@ -51,12 +51,8 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + 10, CLOUD_Y + 10, CLOUD_WIDTH, CLOUD_HEIGHT, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, CLOUD_WIDTH, CLOUD_HEIGHT, '#ffffff');
 
-  var coordinates = [
-    [CLOUD_X + GAP, CLOUD_Y + GAP],
-    [CLOUD_X + GAP, CLOUD_Y + GAP + FONT_SIZE]
-  ];
-
-  renderText(ctx, TEXT_MAIN, coordinates, fontMainStyle, TEXT_COLOR);
+  var beginCoord = [CLOUD_X + GAP, CLOUD_Y + GAP];
+  renderText(ctx, TEXT_MAIN, beginCoord, FONT_SIZE, fontMainStyle, TEXT_COLOR);
 
 
   var maxTime = getMaxElement(times);
