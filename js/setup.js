@@ -93,11 +93,8 @@ var characterPool = document.querySelector('.setup-similar-list');
 var characterTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
 var characterFragment = document.createDocumentFragment();
-for (var i = 0; i < characters.length; i++) {
-  characterFragment.appendChild(createCharacterDom(
-    characterTemplate,
-    characters
-  ));
+for (i = 0; i < characters.length; i++) {
+  characterFragment.appendChild(createCharacterDom(characterTemplate, characters));
 }
 
 characterPool.appendChild(characterFragment);
