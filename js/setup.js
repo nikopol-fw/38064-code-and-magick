@@ -41,6 +41,9 @@ var EYE_COLORS = [
   'green',
 ];
 
+var CHARACTERS_NUMBER = 4;
+
+
 // Получить случайный элемент массива
 // @array - массив с элементами для выборки
 var getRandomArrayItem = function (array) {
@@ -71,21 +74,21 @@ var genericCharacter = function () {
 
 // Создать новый nodeDOM на основе template
 // @template - DOM-element используемый для создания персонажа
-// @characters - массив с объектами-персонаж
-var createCharacterDom = function (template, characters) {
+// @character - объект-персонаж, созданный функцией createCharacter
+var createCharacterDom = function (template, character) {
   var newCharacter = template.cloneNode(true);
 
-  newCharacter.querySelector('.setup-similar-label').textContent = characters[i].name;
-  newCharacter.querySelector('.wizard-coat').style.fill = characters[i].coatColor;
-  newCharacter.querySelector('.wizard-eyes').style.fill = characters[i].eyesColor;
+  newCharacter.querySelector('.setup-similar-label').textContent = character.name;
+  newCharacter.querySelector('.wizard-coat').style.fill = character.coatColor;
+  newCharacter.querySelector('.wizard-eyes').style.fill = character.eyesColor;
 
   return newCharacter;
 };
 
 
 var characters = [];
-for (var i = 0; i < 4; i++) {
-  characters[i] = genericCharacter();
+for (var i = 0; i < CHARACTERS_NUMBER; i++) {
+  characters.push(genericCharacter());
 }
 
 
@@ -94,7 +97,7 @@ var characterTemplate = document.querySelector('#similar-wizard-template').conte
 
 var characterFragment = document.createDocumentFragment();
 for (i = 0; i < characters.length; i++) {
-  characterFragment.appendChild(createCharacterDom(characterTemplate, characters));
+  characterFragment.appendChild(createCharacterDom(characterTemplate, characters[i]));
 }
 
 characterPool.appendChild(characterFragment);
