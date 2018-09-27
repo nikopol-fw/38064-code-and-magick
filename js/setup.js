@@ -141,9 +141,7 @@ var setupEscPressHandler = function (evt) {
 };
 
 
-setupOpen.addEventListener('click', function () {
-  openSetup();
-});
+setupOpen.addEventListener('click', openSetup);
 
 setupOpen.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
@@ -151,9 +149,7 @@ setupOpen.addEventListener('keydown', function (evt) {
   }
 });
 
-setupClose.addEventListener('click', function () {
-  closeSetup();
-});
+setupClose.addEventListener('click', closeSetup);
 
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
