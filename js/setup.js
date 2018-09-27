@@ -193,14 +193,8 @@ var changeFireBallColor = function () {
   fireBallInput.value = newColor;
 };
 
-wizardCoat.addEventListener('click', function () {
-  changeCoatColor();
-});
+wizardCoat.addEventListener('click', changeCoatColor);
 
-wizardEyes.addEventListener('click', function () {
-  changeEyesColor();
-});
+wizardEyes.addEventListener('click', changeEyesColor);
 
-fireBall.addEventListener('click', function () {
-  changeFireBallColor();
-});
+fireBall.addEventListener('click', changeFireBallColor);
